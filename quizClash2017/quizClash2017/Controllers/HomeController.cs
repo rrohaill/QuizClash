@@ -13,6 +13,11 @@ namespace quizClash2017.Controllers
 
        
         public ActionResult Index()
+        {            
+            return View();
+        }
+
+        public ActionResult About()
         {
             myData();
             Random rnd = new Random();
@@ -20,13 +25,6 @@ namespace quizClash2017.Controllers
             ViewBag.question = data.ElementAt(val).Key;
             ViewBag.options = data.ElementAt(val).Value;
             return View(ViewBag.options);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-            Console.WriteLine("FUCK YOU");
-            return View();
         }
 
         public ActionResult Contact()
@@ -37,14 +35,15 @@ namespace quizClash2017.Controllers
         }
 
         [HttpPost]
-        public ActionResult Subscribe()
+        public ActionResult Questions(string button)
         {
+            System.Diagnostics.Debug.WriteLine(button);
             myData();
             Random rnd = new Random();
             int val= rnd.Next(4); //should be unique random number 
             ViewBag.question = data.ElementAt(val).Key;
             ViewBag.options = data.ElementAt(val).Value;
-            return View("Index", ViewBag.options);
+            return View("About", ViewBag.options);
         }
         
         public void myData()

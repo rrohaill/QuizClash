@@ -3,17 +3,6 @@
 }
 
 <div class="main">
-    <div class="question"> 
-    <strong>@ViewBag.question</strong>
-    </div>         
-   
-    <form action="/Home/Subscribe" method="post">
-        
-        @foreach (var option in ViewBag.options)
-        {
-            <input type="submit" value="@option" />
-
-        }
-    </form>
-
+    
+        <button  class="btn btn-default start-btn" type="button" value="Start"  onclick="location.href='@Url.Action("About", "Home")'">Play!</button>
     </div>

@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="main">
+    <div class="question"> 
+    <strong>@ViewBag.question</strong>
+    </div>         
+   
+    <form action="/Home/Subscribe" method="post">
+        
+        @foreach (var option in ViewBag.options)
+        {
+            <input type="submit" value="@option" />
+
+        }
+    </form>
+
+    </div>

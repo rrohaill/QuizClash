@@ -1,7 +1,16 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
+﻿<h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div class="question">
+    <strong>@ViewBag.question</strong>
+
+    <form class="options" action="/Home/Questions" method="post">
+
+        @foreach (var option in ViewBag.options)
+        {
+            <input name="button" type="submit" value="@option" />
+
+        }
+    </form>
+
+</div>

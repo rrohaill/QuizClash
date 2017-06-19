@@ -10,15 +10,17 @@ namespace quizClash2017.Controllers
     public class HomeController : Controller
     {
         Dictionary<string, string[]> data;
-
+        static int count;
        
         public ActionResult Index()
         {            
             return View();
         }
 
+        [HttpGet]
         public ActionResult About()
         {
+            count = 0;
             myData();
             Random rnd = new Random();
             int val = rnd.Next(4); //should be unique random number 
@@ -27,15 +29,16 @@ namespace quizClash2017.Controllers
             return View(ViewBag.options);
         }
 
+        [HttpGet]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.score = "Your Score is" + count;
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult Questions(string button)
+        public ActionResult About(string button)
         {
             System.Diagnostics.Debug.WriteLine(button);
             myData();
@@ -43,6 +46,11 @@ namespace quizClash2017.Controllers
             int val= rnd.Next(4); //should be unique random number 
             ViewBag.question = data.ElementAt(val).Key;
             ViewBag.options = data.ElementAt(val).Value;
+            CheckAnswer(button);
+            if (count> 2)
+            {
+                return RedirectToAction("Contact", "Home");
+            }
             return View("About", ViewBag.options);
         }
         
@@ -56,14 +64,24 @@ namespace quizClash2017.Controllers
         }
         public int UniqueRandomNumber()
         {
-            // return unique random number
-
+                
             return 0;
         }
-        public bool CorrectAnswer()
+        private void CheckAnswer(string option)
         {
-            //return corrct answer
-            return true;
+            if (CorrectAnswers().ContainsValue(option))
+            {
+                count++;
+            }          
+        }
+
+        private Dictionary<int,string> CorrectAnswers()
+        {
+            Dictionary<int, string> answers_dict = new Dictionary<int, string>();
+            answers_dict.Add(1, "ONE1");
+            answers_dict.Add(2, "ONE2");
+            answers_dict.Add(3, "ONE3");
+            return answers_dict;
         }
     }
 }

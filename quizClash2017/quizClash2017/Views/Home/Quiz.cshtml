@@ -1,0 +1,19 @@
+﻿<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="question">
+    <strong class="questionText">@ViewBag.question</strong>
+
+    <form action="/Home/Quiz" method="post">
+        <br />
+
+        @foreach (var option in ViewBag.options)
+        {
+            <input class="options btn btn-default" name="button" type="submit" value="@option" />
+            <input type="hidden" value="@ViewBag.answer" name="answer" />
+            <br>
+            <br>
+        }
+    </form>
+
+</div>

@@ -37,14 +37,37 @@
     font-size: 25px;
     background: #83c917;
     border-color: #fff;
+    position: absolute;
+    top: 40%;
 }
 .main {
-    margin-top: 20%;
-    margin-left: 35%;
+    text-align: center;
+    margin-right: 200px;
 }
-.question{
-    text-align:center;
+.question {
+    margin-top: 120px;
+    text-align: center;
+    border: groove;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
-.options{
-    margin-top: 20px;
+.questionText {
+    font-size: 30px;
+    color: lime;
+}
+.options {
+    width: 200px;
+    height: 40px;
+    font-size: 17px;
+    text-align: center;
+    background: #ca429a; 
+    border-color: #fff;
+}
+
+.score {
+    margin-top: 300px;
+    font-size: -webkit-xxx-large;
+    color: gold;
+    margin-left: 520px;
 }
